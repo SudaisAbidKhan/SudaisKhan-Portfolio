@@ -1,0 +1,337 @@
+/**
+ * variables.css
+ * Single source of truth for all design tokens.
+ * Import this first in index.css.
+ *
+ * Structure:
+ *   1. Raw palette (never use directly in components)
+ *   2. Semantic tokens — dark theme (default)
+ *   3. Semantic tokens — light theme overrides [data-theme="light"]
+ *   4. Typography scale
+ *   5. Spacing & layout
+ *   6. Motion
+ *   7. Shadows & effects
+ *   8. Z-index ladder
+ *   9. Border radius
+ */
+
+/* ══════════════════════════════════════════════════════════════════
+   1. RAW PALETTE
+══════════════════════════════════════════════════════════════════ */
+:root {
+  /* Navy */
+  --palette-navy-950: #060B18;
+  --palette-navy-900: #0A1628;
+  --palette-navy-850: #0C1C35;
+  --palette-navy-800: #0F2044;
+  --palette-navy-750: #132558;
+  --palette-navy-700: #162B5A;
+  --palette-navy-600: #1E3A78;
+  --palette-navy-500: #243F85;
+  --palette-navy-400: #2D4F9E;
+
+  /* Blue */
+  --palette-blue-300: #93C5FD;
+  --palette-blue-400: #60A5FA;
+  --palette-blue-500: #3B82F6;
+  --palette-blue-600: #2563EB;
+  --palette-blue-700: #1D4ED8;
+  --palette-blue-800: #1E40AF;
+
+  /* Slate */
+  --palette-slate-50:  #F8FAFC;
+  --palette-slate-100: #F1F5F9;
+  --palette-slate-200: #E2E8F0;
+  --palette-slate-300: #CBD5E1;
+  --palette-slate-400: #94A3B8;
+  --palette-slate-500: #64748B;
+  --palette-slate-600: #475569;
+  --palette-slate-700: #334155;
+  --palette-slate-800: #1E293B;
+  --palette-slate-900: #0F172A;
+
+  /* Accent colours */
+  --palette-green-400:  #34D399;
+  --palette-green-500:  #10B981;
+  --palette-green-600:  #059669;
+  --palette-amber-400:  #FBBF24;
+  --palette-amber-500:  #F59E0B;
+  --palette-amber-600:  #D97706;
+  --palette-red-400:    #F87171;
+  --palette-red-500:    #EF4444;
+  --palette-purple-400: #C084FC;
+  --palette-purple-500: #A855F7;
+
+  /* Pure */
+  --palette-white: #FFFFFF;
+  --palette-black: #000000;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   2. SEMANTIC TOKENS — DARK (default)
+══════════════════════════════════════════════════════════════════ */
+:root,
+[data-theme="dark"] {
+  /* Backgrounds */
+  --color-bg-base:       var(--palette-navy-950);
+  --color-bg-elevated:   var(--palette-navy-900);
+  --color-bg-card:       rgba(15, 32, 68, 0.60);
+  --color-bg-card-hover: rgba(22, 43, 90, 0.70);
+  --color-bg-overlay:    rgba(6, 11, 24, 0.85);
+  --color-bg-input:      rgba(15, 32, 68, 0.40);
+
+  /* Borders */
+  --color-border:        rgba(59, 130, 246, 0.15);
+  --color-border-hover:  rgba(59, 130, 246, 0.35);
+  --color-border-focus:  rgba(59, 130, 246, 0.60);
+  --color-border-subtle: rgba(59, 130, 246, 0.08);
+
+  /* Text */
+  --color-text-primary:   var(--palette-white);
+  --color-text-secondary: var(--palette-slate-300);
+  --color-text-muted:     var(--palette-slate-500);
+  --color-text-disabled:  var(--palette-slate-600);
+  --color-text-inverse:   var(--palette-navy-950);
+
+  /* Accent */
+  --color-accent:         var(--palette-blue-500);
+  --color-accent-light:   var(--palette-blue-400);
+  --color-accent-dark:    var(--palette-blue-700);
+  --color-accent-glow:    rgba(59, 130, 246, 0.18);
+  --color-accent-glow-lg: rgba(59, 130, 246, 0.28);
+
+  /* Status */
+  --color-success:      var(--palette-green-500);
+  --color-success-bg:   rgba(16, 185, 129, 0.10);
+  --color-success-border: rgba(16, 185, 129, 0.25);
+  --color-warning:      var(--palette-amber-500);
+  --color-warning-bg:   rgba(245, 158, 11, 0.10);
+  --color-warning-border: rgba(245, 158, 11, 0.25);
+  --color-error:        var(--palette-red-500);
+  --color-error-bg:     rgba(239, 68, 68, 0.10);
+  --color-error-border: rgba(239, 68, 68, 0.25);
+  --color-info:         var(--palette-blue-400);
+  --color-info-bg:      rgba(59, 130, 246, 0.10);
+  --color-info-border:  rgba(59, 130, 246, 0.25);
+
+  /* Navbar specific */
+  --color-nav-bg:        rgba(6, 11, 24, 0.92);
+  --color-nav-border:    rgba(59, 130, 246, 0.12);
+
+  /* Scrollbar */
+  --color-scrollbar-track: var(--palette-navy-950);
+  --color-scrollbar-thumb: var(--palette-navy-600);
+  --color-scrollbar-hover: var(--palette-blue-700);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   3. SEMANTIC TOKENS — LIGHT overrides
+══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] {
+  /* Backgrounds */
+  --color-bg-base:       var(--palette-slate-50);
+  --color-bg-elevated:   var(--palette-white);
+  --color-bg-card:       rgba(255, 255, 255, 0.80);
+  --color-bg-card-hover: rgba(241, 245, 249, 0.90);
+  --color-bg-overlay:    rgba(255, 255, 255, 0.92);
+  --color-bg-input:      rgba(255, 255, 255, 0.90);
+
+  /* Borders */
+  --color-border:        rgba(37, 99, 235, 0.18);
+  --color-border-hover:  rgba(37, 99, 235, 0.38);
+  --color-border-focus:  rgba(37, 99, 235, 0.60);
+  --color-border-subtle: rgba(37, 99, 235, 0.08);
+
+  /* Text */
+  --color-text-primary:   var(--palette-slate-900);
+  --color-text-secondary: var(--palette-slate-700);
+  --color-text-muted:     var(--palette-slate-500);
+  --color-text-disabled:  var(--palette-slate-400);
+  --color-text-inverse:   var(--palette-white);
+
+  /* Accent (stays the same hue) */
+  --color-accent:       var(--palette-blue-600);
+  --color-accent-light: var(--palette-blue-500);
+  --color-accent-dark:  var(--palette-blue-800);
+  --color-accent-glow:    rgba(37, 99, 235, 0.12);
+  --color-accent-glow-lg: rgba(37, 99, 235, 0.20);
+
+  /* Navbar */
+  --color-nav-bg:     rgba(248, 250, 252, 0.94);
+  --color-nav-border: rgba(37, 99, 235, 0.12);
+
+  /* Scrollbar */
+  --color-scrollbar-track: var(--palette-slate-100);
+  --color-scrollbar-thumb: var(--palette-slate-300);
+  --color-scrollbar-hover: var(--palette-blue-500);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   4. TYPOGRAPHY SCALE
+══════════════════════════════════════════════════════════════════ */
+:root {
+  /* Font families */
+  --font-display: 'Satoshi', 'Inter', sans-serif;
+  --font-body:    'Satoshi', 'Inter', sans-serif;
+  --font-mono:    'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+  /* Font sizes (fluid via clamp where needed) */
+  --text-xs:   0.70rem;   /* 11.2px */
+  --text-sm:   0.80rem;   /* 12.8px */
+  --text-base: 0.875rem;  /* 14px   */
+  --text-md:   1.00rem;   /* 16px   */
+  --text-lg:   1.125rem;  /* 18px   */
+  --text-xl:   1.25rem;   /* 20px   */
+  --text-2xl:  1.50rem;   /* 24px   */
+  --text-3xl:  clamp(1.6rem, 3vw,  2.2rem);
+  --text-4xl:  clamp(2.0rem, 4vw,  2.8rem);
+  --text-5xl:  clamp(2.4rem, 5vw,  3.5rem);
+  --text-hero: clamp(2.6rem, 6vw,  4.5rem);
+
+  /* Font weights */
+  --font-regular:  400;
+  --font-medium:   500;
+  --font-semibold: 600;
+  --font-bold:     700;
+
+  /* Line heights */
+  --leading-tight:   1.20;
+  --leading-snug:    1.35;
+  --leading-normal:  1.60;
+  --leading-relaxed: 1.75;
+  --leading-loose:   1.90;
+
+  /* Letter spacing */
+  --tracking-tight:  -0.025em;
+  --tracking-normal:  0em;
+  --tracking-wide:    0.04em;
+  --tracking-wider:   0.08em;
+  --tracking-widest:  0.12em;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   5. SPACING & LAYOUT
+══════════════════════════════════════════════════════════════════ */
+:root {
+  /* Base spacing unit: 4px */
+  --space-1:  0.25rem;   /* 4px  */
+  --space-2:  0.50rem;   /* 8px  */
+  --space-3:  0.75rem;   /* 12px */
+  --space-4:  1.00rem;   /* 16px */
+  --space-5:  1.25rem;   /* 20px */
+  --space-6:  1.50rem;   /* 24px */
+  --space-8:  2.00rem;   /* 32px */
+  --space-10: 2.50rem;   /* 40px */
+  --space-12: 3.00rem;   /* 48px */
+  --space-16: 4.00rem;   /* 64px */
+  --space-20: 5.00rem;   /* 80px */
+  --space-24: 6.00rem;   /* 96px */
+
+  /* Container */
+  --container-max:     1200px;
+  --container-max-sm:  860px;
+  --container-pad:     0 2rem;
+  --container-pad-sm:  0 1.25rem;
+
+  /* Section */
+  --section-py:     5rem;
+  --section-py-sm:  3rem;
+
+  /* Navbar */
+  --navbar-height: 72px;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   6. MOTION
+══════════════════════════════════════════════════════════════════ */
+:root {
+  --duration-instant: 80ms;
+  --duration-fast:    150ms;
+  --duration-base:    250ms;
+  --duration-slow:    400ms;
+  --duration-slower:  600ms;
+  --duration-slowest: 900ms;
+
+  --ease-default:   cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in:        cubic-bezier(0.4, 0, 1,   1);
+  --ease-out:       cubic-bezier(0, 0, 0.2,   1);
+  --ease-in-out:    cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring:    cubic-bezier(0.34, 1.56, 0.64, 1);  /* slight overshoot */
+  --ease-bounce:    cubic-bezier(0.68, -0.55, 0.27, 1.55);
+
+  /* Shorthand transitions */
+  --transition-fast:  var(--duration-fast)  var(--ease-default);
+  --transition-base:  var(--duration-base)  var(--ease-default);
+  --transition-slow:  var(--duration-slow)  var(--ease-default);
+  --transition-color: color var(--duration-base) var(--ease-default),
+                      background-color var(--duration-base) var(--ease-default),
+                      border-color var(--duration-base) var(--ease-default);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   7. SHADOWS & EFFECTS
+══════════════════════════════════════════════════════════════════ */
+:root {
+  /* Box shadows */
+  --shadow-xs:    0 1px 2px rgba(0, 0, 0, 0.25);
+  --shadow-sm:    0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md:    0 4px 24px rgba(0, 0, 0, 0.40);
+  --shadow-lg:    0 8px 40px rgba(0, 0, 0, 0.50);
+  --shadow-xl:    0 16px 60px rgba(0, 0, 0, 0.55);
+  --shadow-2xl:   0 24px 80px rgba(0, 0, 0, 0.60);
+
+  /* Blue glow shadows */
+  --shadow-blue-sm: 0 0 16px rgba(59, 130, 246, 0.15);
+  --shadow-blue-md: 0 0 32px rgba(59, 130, 246, 0.20);
+  --shadow-blue-lg: 0 0 60px rgba(59, 130, 246, 0.25);
+
+  /* Card hover shadow */
+  --shadow-card:       var(--shadow-md);
+  --shadow-card-hover: var(--shadow-lg), var(--shadow-blue-sm);
+
+  /* Focus ring */
+  --shadow-focus: 0 0 0 3px rgba(59, 130, 246, 0.35);
+
+  /* Backdrop blur levels */
+  --blur-sm:  blur(8px);
+  --blur-md:  blur(16px);
+  --blur-lg:  blur(24px);
+  --blur-xl:  blur(40px);
+
+  /* Gradient helpers */
+  --gradient-navy:    linear-gradient(135deg, var(--palette-navy-800) 0%, var(--palette-navy-700) 100%);
+  --gradient-blue:    linear-gradient(135deg, var(--palette-blue-600) 0%, var(--palette-blue-400) 100%);
+  --gradient-text:    linear-gradient(135deg, var(--palette-white) 0%, var(--palette-blue-400) 100%);
+  --gradient-subtle:  linear-gradient(180deg, transparent 0%, rgba(6, 11, 24, 0.4) 100%);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   8. Z-INDEX LADDER
+══════════════════════════════════════════════════════════════════ */
+:root {
+  --z-below:    -1;
+  --z-base:      0;
+  --z-raised:   10;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-navbar:   1000;
+  --z-overlay:  1100;
+  --z-modal:    1200;
+  --z-toast:    1300;
+  --z-tooltip:  1400;
+  --z-top:      9999;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   9. BORDER RADIUS
+══════════════════════════════════════════════════════════════════ */
+:root {
+  --radius-none: 0px;
+  --radius-xs:   3px;
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+  --radius-xl:   32px;
+  --radius-2xl:  48px;
+  --radius-full: 9999px;
+}
